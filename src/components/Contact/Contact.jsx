@@ -1,14 +1,23 @@
-// components/ContactPage.js
+import styles from "./Contact.module.css";
 
-import React from "react";
-
-const ContactPage = () => {
+const ContactPage = ({ pageTitle }) => {
   return (
-    <div>
-      <h1>Contact Us</h1>
-      <img src="contact-image.jpg" alt="Contact" />
-      <p>This is the content of the Contact Page.</p>
-    </div>
+    <form className={styles.contactForm}>
+      <h2>{pageTitle}</h2>
+      <div className={styles.formGroup}>
+        <label htmlFor="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+      </div>
+      <div className={styles.formGroup}>
+        <label htmlFor="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+      <div className={styles.formGroup}>
+        <label htmlFor="message">Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+      </div>
+      <button type="submit">Send</button>
+    </form>
   );
 };
 

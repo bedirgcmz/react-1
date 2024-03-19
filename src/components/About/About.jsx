@@ -1,15 +1,20 @@
-// components/AboutPage.js
+import styles from "./About.module.css";
+import { getImageURL } from "../../utils/functions";
 
-import React from "react";
-
-const AboutPage = () => {
+const About = ({ pageTitle }) => {
   return (
-    <div>
-      <h1>About Us</h1>
-      <img src="about-image.jpg" alt="About" />
-      <p>This is the content of the About Page.</p>
+    <div className={styles.aboutContainer}>
+      <h1>{pageTitle}</h1>
+      <img className={styles.aboutImg} src={getImageURL("aboutImg.jpeg")} alt="About" />
+      <h2>Bedir Gocmez</h2>
+      <h3>Frontend Developer</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis dicta doloribus veniam
+        quo ab odit voluptatum suscipit aliquam omnis mollitia modi nam molestiae magnam fugit natus
+        corporis, sapiente asperiores maxime.
+      </p>
     </div>
   );
 };
 
-export default AboutPage;
+export default About;

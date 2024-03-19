@@ -3,28 +3,40 @@ import Home from "./components/Home/Home";
 import About from "./components/About/About";
 import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
-import "./App.css";
-import { articles } from "./assets/data/articles";
+import styles from "./App.module.css";
 import { getImageURL } from "./utils/functions";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
+  const [targetCategory, setTargetCategory] = useState("Politics");
 
   const renderPage = () => {
     switch (currentPage) {
       case "home":
-        return <Home />;
+        return (
+          <Home
+            setTargetCategory={setTargetCategory}
+            targetCategory={targetCategory}
+            pageTitle="Welcome to Latest News"
+          />
+        );
       case "about":
-        return <About />;
+        return <About pageTitle="About Me" />;
       case "contact":
-        return <Contact />;
+        return <Contact pageTitle="Contact Me" />;
       default:
-        return <Home />;
+        return (
+          <Home
+            setTargetCategory={setTargetCategory}
+            targetCategory={targetCategory}
+            pageTitle="Welcome to Latest News"
+          />
+        );
     }
   };
 
   return (
-    <div className="app">
+    <div className={styles.app}>
       <header>
         <nav>
           <ul>
@@ -32,8 +44,8 @@ function App() {
             <li onClick={() => setCurrentPage("about")}>About</li>
             <li onClick={() => setCurrentPage("contact")}>Contact</li>
           </ul>
+          <img className={styles.logo} src={getImageURL("logo.jpeg")} alt="" />
         </nav>
-        <img src={getImageURL("climate.jpeg")} alt="" />
       </header>
       <main>{renderPage()}</main>
       <Footer />
